@@ -1,0 +1,6 @@
+cv2==4.7.0.72
+moviepy==1.03
+python==3.10.2
+requests==2.27.1
+selenium==4.1.0
+python-dotenv==1.0.0
