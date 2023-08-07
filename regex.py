@@ -13,6 +13,12 @@ def get_bpm_key (path:str):
     # \s matches any white space character
     x = re.search(r"\s.*Minor", txt)
     key = x.group().strip()
+
+    # Name fix
+    try:
+        key = key.split("/")[1].strip()
+    except:
+        pass
     #print(key)
 
     txt = txt.replace(x.group(), "")

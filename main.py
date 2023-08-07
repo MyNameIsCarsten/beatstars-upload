@@ -12,28 +12,28 @@ number = 3331
 
 # Define where to look for the beat
 folder = "Female"
+dir_path = f"D:\Dropbox\Beats\ProfessionalStuff\Beatstars\{folder}"
+
+# Define path for Chromedriver
+driver_path = 'D:\Programme\PyCharm_Projects\chromedriver.exe'
+
+# Define path for Image
+clip_path = r"D:\Dropbox\Youtube Uploads\next.png"
 
 # Get beat meta data
-bpm, key, name = get_bpm_key(mp3_path(number, folder))
-
-# Name fix
-try:
-    key = key.split("/")[1].strip()
-except:
-    pass
+bpm, key, name = get_bpm_key(mp3_path(number, folder, dir_path))
 
 # Upload beat
-beatstars(number, bpm, name, key, tags, folder)
+beatstars(number, bpm, name, key, tags, folder, dir_path, driver_path)
+
+# Define path to save video in
+vid_path = fr"C:\Users\Carsten\Downloads\{tags[0]} - {name}.mp4"
+
+# Define path for saving shorts in
+shorts_path = fr"D:\Dropbox\Youtube Uploads\Shorts\{tags[0]} - {name} - Short.mp4"
 
 # Create video
-create_video(mp3_path(number, folder), tags[0], name)
+create_video(mp3_path(number, folder, dir_path), clip_path, vid_path, shorts_path)
 
 # Update Tag Generator
-tag_generator(name, tags[0],tags[1])
-
-'''
-Note:
-If Chromedriver outdated:
-https://chromedriver.chromium.org/downloads
-Save under: D:\Programme\PyCharm_Projects
-'''
+#tag_generator(name, tags[0],tags[1])

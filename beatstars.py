@@ -34,7 +34,7 @@ key_dict = {
 }
 create_crop()
 
-def beatstars(number: int, bpm: int, name: str, key: str, tags: list, folder:str):
+def beatstars(number: int, bpm: int, name: str, key: str, tags: list, folder:str, dir_path:str, driver_path:str):
     # Prevent browser from closing
     ## Create option instance
     chrome_options = Options()
@@ -42,7 +42,7 @@ def beatstars(number: int, bpm: int, name: str, key: str, tags: list, folder:str
 
     # Create instance of google chrome and pass options instance
     # driver = webdriver.Chrome(executable_path="C:\chromedriver.exe")
-    driverService = Service('D:\Programme\PyCharm_Projects\chromedriver.exe')
+    driverService = Service(driver_path)
     driver = webdriver.Chrome(options=chrome_options, service=driverService)
 
     # to maximize the browser window
@@ -228,7 +228,7 @@ def beatstars(number: int, bpm: int, name: str, key: str, tags: list, folder:str
         )
     )
 
-    elem.send_keys(mp3_path(number, folder))
+    elem.send_keys(mp3_path(number, folder, dir_path))
 
     # Click WAV button
     elem = WebDriverWait(driver, 10).until(

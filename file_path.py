@@ -1,10 +1,6 @@
 import os
 
-def mp3_path(number:int, folder:str):
-    # Set new path
-    dir_path = f"D:\Dropbox\Beats\ProfessionalStuff\Beatstars\{folder}"
-    print(f"Looking for beat here: {dir_path}")
-
+def mp3_path(number:int, folder:str, dir_path:str):
     # For loop to iterate through current path
     # filenames are split into: root, dirs (directory) and files
     number = "[" + str(number) + "]"
