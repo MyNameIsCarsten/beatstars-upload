@@ -1,5 +1,5 @@
 # beatstars-upload
-Python script for handling the beat upload to beatstars.com
+Python script for handling the beat upload to beatstars.com and creating a two video files (full video and short) for uploading your beats to YouTube. 
 
 # How it works
 ## Beat naming
@@ -8,6 +8,21 @@ My beats are all named in a specific way:
 
 The script will use this naming convention to grab the BPM, key and beat title.
 The specific beat is identified by its number, here "0001".
+
+*Note: The script is based on minor keys. Further, the spelling needs to be identical to these examples:*
+
+- A-Minor
+- A-Sharp-Minor
+- B-Minor
+- C-Minor
+- C-Sharp-Minor
+- D-Minor
+- D-Sharp-Minor
+- E-Minor
+- F-Minor
+- F-Sharp-Minor
+- G-Minor
+- G-Sharp-Minor
 
 ## After execution
 After you have run the script, you will need to manually choose an upload date and publish your upload.
@@ -42,6 +57,8 @@ https://chromedriver.chromium.org/downloads
 
 ## Video locations
 First, define the location of the image for your video.
+
+*Note: The image should have a 1920px x 1080px dimension.*
 ```
 # Define path for Image
 clip_path = r"D:\Dropbox\Youtube Uploads\next.png"
