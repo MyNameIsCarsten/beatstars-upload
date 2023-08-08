@@ -11,7 +11,7 @@ def get_bpm_key (path:str):
     txt = txt.replace(w.group(), "")
 
     # \s matches any white space character
-    x = re.search(r"\s.*Minor", txt)
+    x = re.search(r"\s.*(Minor|Major)", txt)
     key = x.group().strip()
 
     # Name fix

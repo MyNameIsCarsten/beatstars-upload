@@ -8,7 +8,7 @@ from tag_generator import tag_generator
 tags = ["Sexyy Red", "Sukihana", "Glorilla"]
 
 # Define which beat number should be selected
-number = 3331
+number = 3332
 
 # Define where to look for the beat
 folder = "Female"
@@ -36,4 +36,4 @@ shorts_path = fr"D:\Dropbox\Youtube Uploads\Shorts\{tags[0]} - {name} - Short.mp
 create_video(mp3_path(number, folder, dir_path), clip_path, vid_path, shorts_path)
 
 # Update Tag Generator
-#tag_generator(name, tags[0],tags[1])
+tag_generator(name, tags[0],tags[1])

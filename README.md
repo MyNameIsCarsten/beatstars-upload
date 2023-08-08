@@ -1,5 +1,5 @@
 # beatstars-upload
-Python script for handling the beat upload to beatstars.com and creating a two video files (full video and short) for uploading your beats to YouTube. 
+Python script for handling the beat upload to beatstars.com and creating two video files (full video and short) for uploading your beats to YouTube. 
 
 # How it works
 ## Beat naming
@@ -8,20 +8,42 @@ My beats are all named in a specific way:
 
 The script will use this naming convention to grab the BPM, key and beat title.
 The specific beat is identified by its number, here "0001".
+```
+# Define which beat number should be selected
+number = 0001
+```
 
-*Note: The script is based on minor keys. Further, the spelling needs to be identical to these examples:*
+*Note: The spelling needs to be identical to these examples:*
 
+- A-Flat-Minor
+- A-Flat-Major
 - A-Minor
+- A-Major
 - A-Sharp-Minor
+- A-Sharp-Major
+- B-Flat-Minor
+- B-Flat-Major
 - B-Minor
+- B-Major
+- C-Flat-Major
 - C-Minor
+- C-Major
 - C-Sharp-Minor
+- C-Sharp-Major
+- D-Flat-Major
 - D-Minor
+- D-Major
 - D-Sharp-Minor
+- E-Flat-Major
 - E-Minor
+- E-Major
 - F-Minor
+- F-Major
 - F-Sharp-Minor
+- F-Sharp-Major
+- G-Flat-Major
 - G-Minor
+- G-Major
 - G-Sharp-Minor
 
 ## After execution
