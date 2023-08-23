@@ -1,5 +1,6 @@
+import tkinter
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, INSERT
 from PIL import Image, ImageTk
 from file_path import mp3_path
 from regex import get_bpm_key
@@ -15,13 +16,15 @@ from tkinter import messagebox
 class BeatUploadApp:
     def __init__(self, root):
         self.root = root
-        self.root.geometry('350x350')
+        self.root.geometry('350x500')
+
         self.root.title("Beat Upload Application")
 
         self.tags_label = tk.Label(self.root, text="Enter Tags (comma-separated):")
-        self.tags_label.pack()
+        self.tags_label.pack(pady = (40, 0))
 
-        self.tags_entry = tk.Entry(self.root)
+        self.tags_entry = tk.Entry(self.root, width=40)
+        self.tags_entry.insert(INSERT, "Sexxy Red, Sukihana, Glorilla")
         self.tags_entry.pack()
 
         self.tags_display = tk.Label(self.root, text="", font=("Helvetica", 8, "bold"))
@@ -31,9 +34,10 @@ class BeatUploadApp:
         self.submit_tags_button.pack()
 
         self.number_label = tk.Label(self.root, text="Enter Beat Number:")
-        self.number_label.pack()
+        self.number_label.pack(pady = (20, 0))
 
         self.number_entry = tk.Entry(self.root)
+        self.number_entry.insert(INSERT, "3330")
         self.number_entry.pack()
 
         self.submit_number_button = tk.Button(self.root, text="Submit Number", command=self.submit_number)
@@ -43,7 +47,7 @@ class BeatUploadApp:
         self.number_display.pack()
 
         self.folder_label = tk.Label(self.root, text="Select Folder:")
-        self.folder_label.pack()
+        self.folder_label.pack(pady = (20, 0))
 
         self.folder_button = tk.Button(self.root, text="Browse Folder", command=self.browser_folder)
         self.folder_button.pack()
@@ -52,13 +56,16 @@ class BeatUploadApp:
         self.folder_display.pack()
 
         self.upload_button = tk.Button(self.root, text="Upload Beat", command=self.upload_beat, state="disabled")
-        self.upload_button.pack()
+        self.upload_button.pack(pady = (20, 0))
 
         self.video_button = tk.Button(self.root, text="Create Video", command=self.create_video, state="disabled")
         self.video_button.pack()
 
         self.tag_button = tk.Button(self.root, text="Update Tag Generator", command=self.update_tag_generator, state="disabled")
         self.tag_button.pack()
+
+        self.cred_label = tk.Label(self.root, text="Created by https://github.com/MyNameIsCarsten", font=("Helvetica", 8), fg="grey")
+        self.cred_label.pack(pady = 20)
 
         self.folder_path = None
         self.selected_folder = ""
