@@ -54,7 +54,17 @@ number = 0001
 ## After execution
 After you have run the script, you will need to manually choose an upload date and publish your upload.
 
-# Set-Up
+# Set-Up (with GUI)
+The newer version of this app features a GUI.
+You can now conveniently input the necessary information.
+
+Note: When choosing a folder, you won't see any files. This is correct. 
+The app will identify your beat based on the input number.
+
+The `clip_path`, `vid_path` and `driver_path` are set within `GUI.py`.
+Change these to your preferred locations.
+
+# Set-Up (without GUI)
 ## Create .env-File for login credentials
 In order for the script to work, you will need to create a file called ".env".
 Open it with a normal text editor and copy this code:
@@ -62,7 +72,7 @@ Open it with a normal text editor and copy this code:
 DEVICE_USERNAME="username"
 DEVICE_PASSWORD="password"
 ```
-Now, insert you beatstars username and password.
+Now, insert you Beatstars username and password.
 
 ## Beat path
 In "main.py" define where the script should look for the beat:
@@ -101,6 +111,6 @@ vid_path = fr"C:\Users\Carsten\Downloads\{tags[0]} - {name}.mp4"
 shorts_path = fr"D:\Dropbox\Youtube Uploads\Shorts\{tags[0]} - {name} - Short.mp4"
 ```
 ## Tag generator
-I have created an excel file (not part of this project) that I use for creating the YouTube text and tags.
-The "tag_generator.py" module inserts the beat title and 2 of the 3 artist names into this excel.
+I have created an Excel file (not part of this project) that I use for creating the YouTube text and tags.
+The "tag_generator.py" module inserts the beat title and 2 of the 3 artist names into this Excel.
 You can comment out this function in "main.py".
