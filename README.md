@@ -1,11 +1,12 @@
 # Beatstars Upload Bot
 ![GUI](GUI.jpg)
 ## Description
-Python sapp for handling the beat upload to beatstars.com and creating two video files (full video and short) for uploading your beats to YouTube. 
+Python app for handling the beat upload to beatstars.com and creating two video files (full video and short) for uploading your beats to YouTube. 
 
 This app saves time and helps automate the beat upload.
 # Requirements
 Install the required packages by running the following command in your terminal:
+
 `pip install -r .\requirements.txt`
 
 
