@@ -1,12 +1,15 @@
-# beatstars-upload
-Python script for handling the beat upload to beatstars.com and creating two video files (full video and short) for uploading your beats to YouTube. 
+# Beatstars Upload Bot
+![GUI](GUI.jpg)
+## Description
+Python sapp for handling the beat upload to beatstars.com and creating two video files (full video and short) for uploading your beats to YouTube. 
 
+This app saves time and helps automate the beat upload.
 # Requirements
 Install the required packages by running the following command in your terminal:
 `pip install -r .\requirements.txt`
 
 
-# How it works
+# How to use
 ## Beat naming
 My beats are all named in a specific way:
 [0001] C-Minor 100BPM Beat-Name (Prod. by MyName)
@@ -54,7 +57,7 @@ number = 0001
 ## After execution
 After you have run the script, you will need to manually choose an upload date and publish your upload.
 
-# Set-Up (with GUI)
+## Set-Up (with GUI)
 The newer version of this app features a GUI.
 You can now conveniently input the necessary information.
 
@@ -64,8 +67,8 @@ The app will identify your beat based on the input number.
 The `clip_path`, `vid_path` and `driver_path` are set within `GUI.py`.
 Change these to your preferred locations.
 
-# Set-Up (without GUI)
-## Create .env-File for login credentials
+## Set-Up (without GUI)
+### Create .env-File for login credentials
 In order for the script to work, you will need to create a file called ".env".
 Open it with a normal text editor and copy this code:
 ```
@@ -74,7 +77,7 @@ DEVICE_PASSWORD="password"
 ```
 Now, insert you Beatstars username and password.
 
-## Beat path
+### Beat path
 In "main.py" define where the script should look for the beat:
 ```
 # Define where to look for the beat
@@ -82,7 +85,7 @@ folder = "Female"
 dir_path = f"D:\Dropbox\Beats\ProfessionalStuff\Beatstars\{folder}"
 ```
 
-## Chromedriver location
+### Chromedriver location
 In "main.py" define where the script should look for Chromedriver:
 ```
 # Define path for Chromedriver
@@ -92,7 +95,7 @@ driver_path = 'D:\Programme\PyCharm_Projects\chromedriver.exe'
 If Chromedriver is outdated or you don't have it yet, get it here:
 https://chromedriver.chromium.org/downloads
 
-## Video locations
+### Video locations
 First, define the location of the image for your video.
 
 *Note: The image should have a 1920px x 1080px dimension.*
@@ -114,3 +117,9 @@ shorts_path = fr"D:\Dropbox\Youtube Uploads\Shorts\{tags[0]} - {name} - Short.mp
 I have created an Excel file (not part of this project) that I use for creating the YouTube text and tags.
 The "tag_generator.py" module inserts the beat title and 2 of the 3 artist names into this Excel.
 You can comment out this function in "main.py".
+
+# Technologies
+The app is based on:
+- Moviepy
+- Opencv
+- Selenium

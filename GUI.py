@@ -16,43 +16,61 @@ from tkinter import messagebox
 class BeatUploadApp:
     def __init__(self, root):
         self.root = root
-        self.root.geometry('350x500')
+        self.root.geometry('350x510')
 
         self.root.title("Beat Upload Application")
 
-        self.tags_label = tk.Label(self.root, text="Enter Tags (comma-separated):")
-        self.tags_label.pack(pady = (40, 0))
+        # Create Frames
+        self.first_frame = tk.Frame(root)
+        self.first_frame.pack()
+        self.tag_frame = tk.LabelFrame(self.first_frame, text='Tag Information')
+        self.tag_frame.pack(pady=(20, 0))
 
-        self.tags_entry = tk.Entry(self.root, width=40)
-        self.tags_entry.insert(INSERT, "Sexxy Red, Sukihana, Glorilla")
+        self.second_frame = tk.Frame(root)
+        self.second_frame.pack()
+        self.number_frame = tk.LabelFrame(self.second_frame, text='Number Information')
+        self.number_frame.pack(pady=(20, 0))
+
+        self.third_frame = tk.Frame(root)
+        self.third_frame.pack()
+        self.path_frame = tk.LabelFrame(self.third_frame, text='Path Information')
+        self.path_frame.pack(pady=(20, 0))
+
+
+
+        self.tags_label = tk.Label(self.tag_frame, text="Enter Tags (comma-separated):")
+        self.tags_label.pack()
+
+        self.tags_entry = tk.Entry(self.tag_frame, width=40)
+        self.tags_entry.insert(INSERT, "Artist1, Artist2, Artist3")
         self.tags_entry.pack()
 
-        self.tags_display = tk.Label(self.root, text="", font=("Helvetica", 8, "bold"))
+        self.tags_display = tk.Label(self.tag_frame, text="", font=("Helvetica", 8, "bold"))
         self.tags_display.pack()
 
-        self.submit_tags_button = tk.Button(self.root, text="Submit Tags", command=self.submit_tags)
+        self.submit_tags_button = tk.Button(self.tag_frame, text="Submit Tags", command=self.submit_tags)
         self.submit_tags_button.pack()
 
-        self.number_label = tk.Label(self.root, text="Enter Beat Number:")
-        self.number_label.pack(pady = (20, 0))
+        self.number_label = tk.Label(self.number_frame, text="Enter Beat Number:")
+        self.number_label.pack()
 
-        self.number_entry = tk.Entry(self.root)
+        self.number_entry = tk.Entry(self.number_frame)
         self.number_entry.insert(INSERT, "3330")
         self.number_entry.pack()
 
-        self.submit_number_button = tk.Button(self.root, text="Submit Number", command=self.submit_number)
+        self.submit_number_button = tk.Button(self.number_frame, text="Submit Number", command=self.submit_number)
         self.submit_number_button.pack()
 
-        self.number_display = tk.Label(self.root, text="", font=("Helvetica", 8, "bold"))
+        self.number_display = tk.Label(self.number_frame, text="", font=("Helvetica", 8, "bold"))
         self.number_display.pack()
 
-        self.folder_label = tk.Label(self.root, text="Select Folder:")
-        self.folder_label.pack(pady = (20, 0))
+        self.folder_label = tk.Label(self.path_frame, text="Select Folder:")
+        self.folder_label.pack()
 
-        self.folder_button = tk.Button(self.root, text="Browse Folder", command=self.browser_folder)
+        self.folder_button = tk.Button(self.path_frame, text="Browse Folder", command=self.browser_folder)
         self.folder_button.pack()
 
-        self.folder_display = tk.Label(self.root, text="", font=("Helvetica", 8, "bold"))
+        self.folder_display = tk.Label(self.path_frame, text="", font=("Helvetica", 8, "bold"))
         self.folder_display.pack()
 
         self.upload_button = tk.Button(self.root, text="Upload Beat", command=self.upload_beat, state="disabled")
