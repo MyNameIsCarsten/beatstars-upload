@@ -3,6 +3,7 @@ import os
 def mp3_path(number:int, folder:str, dir_path:str):
     # For loop to iterate through current path
     # filenames are split into: root, dirs (directory) and files
+    print(dir_path)
     number = "[" + str(number) + "]"
     for root, dirs, files in os.walk(dir_path):
         for file in files:

@@ -55,10 +55,12 @@ number = 0001
 - G-Major
 - G-Sharp-Minor
 
-## After execution
-After you have run the script, you will need to manually choose an upload date and publish your upload.
 
 ## Set-Up (with GUI)
+(Note: Please input the path to your WAV-Files in the file `file_path.py` under:
+
+`dir_path = "D:\Dropbox\Beats\ProfessionalStuff\Beatstars\\1! Wav Files"`)
+
 The newer version of this app features a GUI.
 You can now conveniently input the necessary information.
 
@@ -67,6 +69,7 @@ The app will identify your beat based on the input number.
 
 The `clip_path`, `vid_path` and `driver_path` are set within `GUI.py`.
 Change these to your preferred locations.
+
 
 ## Set-Up (without GUI)
 ### Create .env-File for login credentials
@@ -118,6 +121,10 @@ shorts_path = fr"D:\Dropbox\Youtube Uploads\Shorts\{tags[0]} - {name} - Short.mp
 I have created an Excel file (not part of this project) that I use for creating the YouTube text and tags.
 The "tag_generator.py" module inserts the beat title and 2 of the 3 artist names into this Excel.
 You can comment out this function in "main.py".
+
+## After execution
+After you have run the script, you will need to manually choose an upload date and publish your upload on the opened Chrome window.
+
 
 # Technologies
 The app is based on:

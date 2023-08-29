@@ -16,7 +16,7 @@ from tkinter import messagebox
 class BeatUploadApp:
     def __init__(self, root):
         self.root = root
-        self.root.geometry('350x510')
+        self.root.geometry('350x580')
 
         self.root.title("Beat Upload Application")
 
@@ -36,13 +36,18 @@ class BeatUploadApp:
         self.path_frame = tk.LabelFrame(self.third_frame, text='Path Information')
         self.path_frame.pack(pady=(20, 0))
 
+        self.fourth_frame = tk.Frame(root)
+        self.fourth_frame.pack()
+        self.check_frame = tk.LabelFrame(self.fourth_frame, text='App Checkboxes')
+        self.check_frame.pack(pady=(20, 0))
+
 
 
         self.tags_label = tk.Label(self.tag_frame, text="Enter Tags (comma-separated):")
         self.tags_label.pack()
 
         self.tags_entry = tk.Entry(self.tag_frame, width=40)
-        self.tags_entry.insert(INSERT, "Artist1, Artist2, Artist3")
+        self.tags_entry.insert(INSERT, "Sexyy Red, Sukihana, Glorilla")
         self.tags_entry.pack()
 
         self.tags_display = tk.Label(self.tag_frame, text="", font=("Helvetica", 8, "bold"))
@@ -73,14 +78,29 @@ class BeatUploadApp:
         self.folder_display = tk.Label(self.path_frame, text="", font=("Helvetica", 8, "bold"))
         self.folder_display.pack()
 
-        self.upload_button = tk.Button(self.root, text="Upload Beat", command=self.upload_beat, state="disabled")
-        self.upload_button.pack(pady = (20, 0))
+        #self.upload_button = tk.Button(self.root, text="Upload Beat", command=self.upload_beat, state="disabled")
+        #self.upload_button.pack(pady = (20, 0))
+        self.beat_state = tk.IntVar()
+        self.beat_checkbutton = tk.Checkbutton(self.check_frame, text='Upload Beat', variable=self.beat_state, state='disabled')
+        self.beat_checkbutton.pack()
 
-        self.video_button = tk.Button(self.root, text="Create Video", command=self.create_video, state="disabled")
-        self.video_button.pack()
 
-        self.tag_button = tk.Button(self.root, text="Update Tag Generator", command=self.update_tag_generator, state="disabled")
-        self.tag_button.pack()
+        #self.video_button = tk.Button(self.root, text="Create Video", command=self.create_video, state="disabled")
+        #self.video_button.pack()
+        self.video_state = tk.IntVar()
+        self.video_checkbutton = tk.Checkbutton(self.check_frame, text='Create Video', variable=self.video_state,  state='disabled')
+        self.video_checkbutton.pack()
+
+
+        #self.tag_button = tk.Button(self.root, text="Update Tag Generator", command=self.update_tag_generator, state="disabled")
+        #self.tag_button.pack()
+        self.tag_state = tk.IntVar()
+        self.tag_checkbutton = tk.Checkbutton(self.check_frame, text='Update Tag Generator', variable=self.tag_state,  state='disabled')
+        self.tag_checkbutton.pack()
+
+
+        self.start_button = tk.Button(self.check_frame, text="Start App", command=self.start_app)
+        self.start_button.pack()
 
         self.cred_label = tk.Label(self.root, text="Created by https://github.com/MyNameIsCarsten", font=("Helvetica", 8), fg="grey")
         self.cred_label.pack(pady = 20)
@@ -99,9 +119,11 @@ class BeatUploadApp:
         if entered_number.isdigit():
             self.number = int(entered_number)
             self.number_display.config(text=f"Submitted Number: {self.number}", fg="grey")
-            self.upload_button.config(state="normal")
-            self.video_button.config(state="normal")
-            self.tag_button.config(state="normal")
+            self.submit_number_button.config(state="disabled")
+            #self.upload_button.config(state="normal")
+            #self.video_button.config(state="normal")
+            #self.tag_button.config(state="normal")
+
         else:
             self.number_display.config(text="Invalid Input", fg="red")
 
@@ -109,16 +131,17 @@ class BeatUploadApp:
         self.selected_folder = filedialog.askdirectory()
         self.folder_display.config(text=f"{self.selected_folder}", fg="grey")
         self.dir_path = os.path.dirname(self.selected_folder)
-        self.submit_tags_button.config(state="normal")
+        self.folder_button.config(state="disabled")
+        self.beat_checkbutton.config(state="normal")
+        self.tag_checkbutton.config(state="normal")
+        self.video_checkbutton.config(state="normal")
 
     def submit_tags(self):
         entered_tags = self.tags_entry.get()
         self.tags = [tag.strip() for tag in entered_tags.split(',')]
         self.tags_display.config(text=f"{self.tags}", fg="grey")
         self.submit_tags_button.config(state="disabled")
-        self.upload_button.config(state="normal")
-        self.video_button.config(state="normal")
-        self.tag_button.config(state="normal")
+
 
     def upload_beat(self):
         self.folder_path = self.selected_folder.split('/')[-1]
@@ -130,6 +153,8 @@ class BeatUploadApp:
             beatstars(self.number, self.bpm, self.name, self.key, self.tags, self.folder_path, self.dir_path, driver_path)
         self.upload_button.config(state="disabled")
 
+
+
     def create_video(self):
         if self.folder_path:
             bpm, key, name = get_bpm_key(mp3_path(self.number, self.folder_path, self.dir_path))  # Assuming "number" is defined somewhere
@@ -138,7 +163,8 @@ class BeatUploadApp:
             shorts_path = fr"D:\Dropbox\Youtube Uploads\Shorts\{self.tags[0]} - {self.name} - Short.mp4"  # Your shorts path
 
             create_video(mp3_path(self.number, self.folder_path, self.dir_path), clip_path, vid_path, shorts_path)
-        self.video_button.config(state="disabled")
+        #self.video_button.config(state="disabled")
+
 
     def update_tag_generator(self):
         tag_workbook_path = r"D:\Dropbox\Youtube Uploads\Tag Generator.xlsx"
@@ -155,7 +181,28 @@ class BeatUploadApp:
         first_sheet["G3"].value = self.tags[1]
 
         workbook.save(filename=tag_workbook_path)
-        self.tag_button.config(state="disabled")
+        #self.tag_button.config(state="disabled")
+        return
+
+    def start_app(self):
+        if self.beat_state.get() == 1:
+            self.upload_beat()
+            self.beat_checkbutton.config(state="disabled")
+        else:
+            pass
+
+        if self.video_state.get() == 1:
+            self.create_video()
+            self.video_checkbutton.config(state="disabled")
+        else:
+            pass
+
+        if self.tag_state.get() == 1:
+            self.update_tag_generator()
+            self.tag_checkbutton.config(state="disabled")
+        else:
+            pass
+
         return
 
 if __name__ == "__main__":
