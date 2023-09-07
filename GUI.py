@@ -151,13 +151,14 @@ class BeatUploadApp:
             driver_path = 'D:\Programme\PyCharm_Projects\chromedriver.exe'  # Your driver path
 
             beatstars(self.number, self.bpm, self.name, self.key, self.tags, self.folder_path, self.dir_path, driver_path)
-        self.upload_button.config(state="disabled")
+        #self.upload_button.config(state="disabled")
 
 
 
     def create_video(self):
+        self.folder_path = self.selected_folder.split('/')[-1]
         if self.folder_path:
-            bpm, key, name = get_bpm_key(mp3_path(self.number, self.folder_path, self.dir_path))  # Assuming "number" is defined somewhere
+            self.bpm, self.key, self.name = get_bpm_key(mp3_path(self.number, self.folder_path, self.dir_path))  # Assuming "number" is defined somewhere
             clip_path = r"D:\Dropbox\Youtube Uploads\next.png"  # Your clip path
             vid_path = fr"C:\Users\Carsten\Downloads\{self.tags[0]} - {self.name}.mp4"  # Your video path
             shorts_path = fr"D:\Dropbox\Youtube Uploads\Shorts\{self.tags[0]} - {self.name} - Short.mp4"  # Your shorts path
