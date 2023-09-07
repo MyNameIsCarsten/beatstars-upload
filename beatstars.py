@@ -14,6 +14,7 @@ from file_path import wav_path
 from crop_image import create_crop
 import os
 from dotenv import load_dotenv
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Load the .env file
 load_dotenv()
@@ -60,8 +61,8 @@ def beatstars(number: int, bpm: int, name: str, key: str, tags: list, folder:str
 
     # Create instance of google chrome and pass options instance
     # driver = webdriver.Chrome(executable_path="C:\chromedriver.exe")
-    driverService = Service(driver_path)
-    driver = webdriver.Chrome(options=chrome_options, service=driverService)
+    #driverService = Service(driver_path)
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 
     # to maximize the browser window
     driver.maximize_window()

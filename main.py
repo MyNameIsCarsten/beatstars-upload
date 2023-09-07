@@ -8,7 +8,7 @@ from tag_generator import tag_generator
 tags = ["Sexyy Red", "Sukihana", "Glorilla"]
 
 # Define which beat number should be selected
-number = 3332
+number = 3341
 
 # Define where to look for the beat
 folder = "Female"
