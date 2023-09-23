@@ -313,5 +313,4 @@ def beatstars(number: int, bpm: int, name: str, key: str, tags: list, folder:str
     )
     elem.click()
 
-
     return

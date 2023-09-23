@@ -5,3 +5,4 @@ requests==2.27.1
 selenium==4.1.0
 python-dotenv==1.0.0
 webdriver-manager==4.0.0
+win10toast==0.9

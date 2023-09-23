@@ -12,8 +12,10 @@ from openpyxl import load_workbook
 import os
 import re
 from tkinter import messagebox
+from win10toast import ToastNotifier
 
 class BeatUploadApp:
+
     def __init__(self, root):
         self.root = root
         self.root.geometry('350x580')
@@ -114,6 +116,22 @@ class BeatUploadApp:
         self.name = None
         self.tags = []
 
+        try:
+            # Try to open the file for reading
+            with open("user_inputs.txt", "r") as file:
+                lines = file.readlines()
+
+            # Extract the saved values and insert them into the entry widgets
+            for line in lines:
+                if line.startswith("Tags:"):
+                    self.tags_entry.delete(0, tk.END)
+                    self.tags_entry.insert(INSERT, line.strip().replace("Tags: ", ""))
+                elif line.startswith("Number:"):
+                    self.number_entry.delete(0, tk.END)
+                    self.number_entry.insert(INSERT, line.strip().replace("Number: ", ""))
+        except FileNotFoundError:
+            pass  # The file doesn't exist yet
+
     def submit_number(self):
         entered_number = self.number_entry.get()
         if entered_number.isdigit():
@@ -165,6 +183,11 @@ class BeatUploadApp:
 
             create_video(mp3_path(self.number, self.folder_path, self.dir_path), clip_path, vid_path, shorts_path)
         #self.video_button.config(state="disabled")
+        try:
+            toaster = ToastNotifier()
+            toaster.show_toast('Video is done.', 'The video was successfully created.', duration=120)
+        except TypeError:
+            print('Notification did not work.')
 
 
     def update_tag_generator(self):
@@ -186,6 +209,14 @@ class BeatUploadApp:
         return
 
     def start_app(self):
+        tags_save = self.tags_entry.get()
+        number_save = self.number_entry.get()
+
+        # Save the inputs to a file
+        with open("user_inputs.txt", "w") as file:
+            file.write(f"Tags: {tags_save}\n")
+            file.write(f"Number: {number_save}")
+
         if self.beat_state.get() == 1:
             self.upload_beat()
             self.beat_checkbutton.config(state="disabled")

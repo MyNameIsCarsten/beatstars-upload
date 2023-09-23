@@ -9,5 +9,9 @@ def tag_generator(title:str, art1:str, art2:str):
     first_sheet["D3"].value = art1
     first_sheet["G3"].value = art2
 
+    second_sheet = workbook['Album Tag']
+
+    second_sheet['J3'].value = title
+
     workbook.save(filename="D:\Dropbox\Youtube Uploads\Tag Generator.xlsx")
     return
